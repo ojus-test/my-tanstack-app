@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: app
+    runtime: node
+    buildCommand: "npm install --include=dev && vite build && cp instrument.server.mjs .output/server"
+    startCommand: "node --import ./.output/server/instrument.server.mjs .output/server/index.mjs"
+    envVars:
+      - key: NODE_ENV
+        value: production
